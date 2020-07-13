@@ -4,14 +4,131 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.togo</groupId>
     <artifactId>caribou</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>demo</module>
         <module>sdk</module>
     </modules>
 
+    <!-- 属性 -->
+    <properties>
+
+        <!-- 基础架构 -->
+        <java.version>1.8</java.version>
+        <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
+        <dubbo.version>2.7.3</dubbo.version>
+        <dubbo.springboot.version>2.7.3</dubbo.springboot.version>
+        <apollo.ziroom.version>1.2.3-RC3</apollo.ziroom.version>
+        <sharding-sphere.version>4.0.0-RC1</sharding-sphere.version>
+        <mybatis-springboot.version>2.1.0</mybatis-springboot.version>
+        <pagehelper.version>5.1.10</pagehelper.version>
+        <druid-springboot.version>1.1.22</druid-springboot.version>
+        <mysql.version>6.0.6</mysql.version>
+        <ziroom.gelflog.version>2.1.2</ziroom.gelflog.version>
+
+        <!-- 工具 -->
+        <guava.version>28.0-jre</guava.version>
+        <fastjson.version>1.2.58</fastjson.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-lang.version>3.9</commons-lang.version>
+        <pinyin4j.version>2.5.0</pinyin4j.version>
+        <commons-net.version>3.4</commons-net.version>
+        <pdfbox.version>1.8.13</pdfbox.version>
+        <QLExpress.version>3.2.0</QLExpress.version>
+        <fasterxml.version>2.10.0</fasterxml.version>
+        <lombok.version>1.18.4</lombok.version>
+        <asm.version>7.0</asm.version>
+        <swagger.version>2.9.2</swagger.version>
+        <groovy.version>2.4.7</groovy.version>
+
+    </properties>
+
+    <!-- 依赖 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>guava</artifactId>
+                <groupId>com.google.guava</groupId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>${groovy.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.5.2</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.28</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>3.4.13</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.1.0</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

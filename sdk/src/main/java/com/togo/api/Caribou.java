@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * @Author taiyn
- * @Description 通用查询对外暴露接口
+ * @Description common query api
  * @Date 10:16 下午 2020/7/14
  **/
 public interface Caribou {

@@ -1,6 +1,6 @@
 package com.togo.cluster;
 
-import com.togo.exception.ZKException;
+import com.togo.base.exception.ZKException;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;

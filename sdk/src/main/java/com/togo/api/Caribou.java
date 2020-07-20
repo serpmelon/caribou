@@ -1,5 +1,9 @@
 package com.togo.api;
 
+import com.togo.base.config.Config;
+import com.togo.data.local.SQLSelector;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import java.util.List;
 import java.util.Map;
 
@@ -8,13 +12,32 @@ import java.util.Map;
  * @Description common query api
  * @Date 10:16 下午 2020/7/14
  **/
-public interface Caribou {
+public class Caribou {
 
-    void init();
+    private SqlSessionFactory sqlSessionFactory;
+    private SQLSelector selector;
 
-    List<Map<String, Object>> run();
+    private static final String DEFAULT_DATASOURCE_ID = "default";
 
-    String add();
+    private static boolean initialized = false;
 
+    private Caribou(SqlSessionFactory sqlSessionFactory, String sourceId) {
 
+    }
+
+    private Caribou(SqlSessionFactory sqlSessionFactory) {
+
+        this(sqlSessionFactory, DEFAULT_DATASOURCE_ID);
+    }
+
+    public static void init() {
+
+        String path = "caribou.properties";
+        Config config = Config.getInstance(path);
+        System.out.println(config.getName());
+    }
+
+//    List<Map<String, Object>> run();
+//
+//    String add();
 }

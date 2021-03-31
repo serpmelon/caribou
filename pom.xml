@@ -31,7 +31,7 @@
         <ziroom.gelflog.version>2.1.2</ziroom.gelflog.version>
 
         <!-- 工具 -->
-        <guava.version>28.0-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <fastjson.version>1.2.58</fastjson.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-lang.version>3.9</commons-lang.version>
